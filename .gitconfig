@@ -1,0 +1,18 @@
+[user]
+	name = Philippe Bürgisser
+	email = philippe.burgisser@camptocamp.com
+	signingkey = 13CC12D9565C3DE4
+[alias]
+  please = push --force-with-lease
+  commend = commit --amend --no-edit
+  undo = reset HEAD~
+[color]
+  ui = auto
+[format]
+	signoff = true
+[push]
+	default = simple
+[commit]
+	gpgsign = true
+[pull]
+	ff = only

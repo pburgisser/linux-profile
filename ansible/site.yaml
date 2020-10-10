@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    userPath: /home/pburgisser
+    helm:
+      v2: https://get.helm.sh/helm-v2.16.12-linux-amd64.tar.gz
+      v3: https://get.helm.sh/helm-v3.3.4-linux-amd64.tar.gz
+  pre_tasks:
+    - name: Ensure landing bin directory
+      file:
+        path: "{{ userPath }}/.bin"
+        state: directory
+  tasks:
+    - name: i3 tasks
+      import_tasks: i3.yaml
+      tags: i3
+    - name: helm tasks
+      import_tasks: helm.yaml
+      tags: helm

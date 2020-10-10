@@ -1,0 +1,23 @@
+---
+- name: Download helm 2 and 3
+  get_url:
+    url: "{{ item.value }}"
+    dest: /tmp/helm-{{ item.key }}.tar.gz
+  loop: "{{ lookup('dict',helm) }}"
+- name: Create landing directory
+  file:
+    path: /tmp/helm-{{ item.key }}
+    state: directory
+  loop: "{{ lookup('dict',helm) }}"
+
+- name: unarchive helm
+  unarchive:
+    src: /tmp/helm-{{ item.key }}.tar.gz
+    dest: "/tmp/helm-{{ item.key }}"
+  loop: "{{ lookup('dict',helm) }}"
+- name: Copy binary
+  copy:
+    src: /tmp/helm-{{ item.key }}/linux-amd64/helm
+    dest: "{{ userPath }}/.bin/helm-{{ item.key }}"
+    remote_src: yes
+  loop: "{{ lookup('dict',helm) }}"

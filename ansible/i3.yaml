@@ -1,0 +1,17 @@
+---
+- name: Install i3 packages
+  yum:
+    name:
+     - i3
+     - i3status
+     - i3lock
+     - network-manager-applet
+     - blueman
+     - ffmpeg
+    state: present
+  become: true
+- name: Create symlink
+  file:
+    src: "{{ userPath }}/.myprofile/i3"
+    dest: "{{ userPath }}/.config/i3"
+    state: link
