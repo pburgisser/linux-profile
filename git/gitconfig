@@ -14,5 +14,6 @@
 	default = simple
 [commit]
 	gpgsign = true
+	template = ~/.git-templates/commit-template
 [pull]
 	ff = only
