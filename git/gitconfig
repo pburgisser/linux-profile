@@ -17,3 +17,5 @@
 	template = /home/pburgisser/.git-templates/commit-template
 [pull]
 	ff = only
+[core]
+  editor = "vim"
